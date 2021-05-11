@@ -46,6 +46,6 @@ public class MainTest {
         Mockito.when(br.readLine()).thenReturn("put 1 2 3 4 5").thenReturn(null);
         String[] args = null;
         Main.main(args);
-        assertEquals("$68 1 2 3 4 5", outContent.toString().trim());
+        assertEquals("$68 1 2 3 4 5", outContent.toString().split("\n")[1].trim());
     }
 }
