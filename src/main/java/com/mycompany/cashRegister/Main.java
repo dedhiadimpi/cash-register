@@ -15,6 +15,7 @@ public class Main {
     public static void main(String[] args) throws IOException {
         //create the object of cash register
         CashRegisterImpl cashRegisterImpl = new CashRegisterImpl();
+        System.out.println("ready");
         //Read the user input
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String command;
@@ -22,6 +23,9 @@ public class Main {
             //convert input string to array of string
             String[] input = command.split(" ");
             try {
+                if (input.length <= 0) {
+                    throw new WrongCommandException();
+                }
                 //switch case for performing the action as per user input
                 switch (input[0]) {
                     //if user inputs 'show' command, call show method of cash register
@@ -51,7 +55,7 @@ public class Main {
             } catch (NumberFormatException e) {
                 System.out.println(Messages.INVALID_NUMBER_ERR);
             } catch (Exception e) {
-                System.out.println(e);
+                System.out.println(e.getMessage());
             }
         }
     }
